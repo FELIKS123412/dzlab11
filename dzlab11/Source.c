@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <locale.h>
 #define COUNT 3 
@@ -22,28 +22,28 @@ int main() {
 
     setlocale(LC_ALL, "RUS");
 
-    printf("Программа для учёта автобусных маршрутов\n\n");
+    printf("РџСЂРѕРіСЂР°РјРјР° РґР»СЏ СѓС‡С‘С‚Р° Р°РІС‚РѕР±СѓСЃРЅС‹С… РјР°СЂС€СЂСѓС‚РѕРІ\n\n");
 
     for (i = 0; i < COUNT; i++) {
-        printf("Ввод данных для маршрута %d:\n", i + 1);
-        printf("Введите номер маршрута: ");
+        printf("Р’РІРѕРґ РґР°РЅРЅС‹С… РґР»СЏ РјР°СЂС€СЂСѓС‚Р° %d:\n", i + 1);
+        printf("Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РјР°СЂС€СЂСѓС‚Р°: ");
         scanf("%d", &routes[i].number);
 
-        printf("Введите начальную остановку: ");
+        printf("Р’РІРµРґРёС‚Рµ РЅР°С‡Р°Р»СЊРЅСѓСЋ РѕСЃС‚Р°РЅРѕРІРєСѓ: ");
         scanf("%29s", routes[i].startroad);
 
-        printf("Введите конечную остановку: ");
+        printf("Р’РІРµРґРёС‚Рµ РєРѕРЅРµС‡РЅСѓСЋ РѕСЃС‚Р°РЅРѕРІРєСѓ: ");
         scanf("%29s", routes[i].stoproad);
 
-        printf("Введите длину маршрута (км): ");
+        printf("Р’РІРµРґРёС‚Рµ РґР»РёРЅСѓ РјР°СЂС€СЂСѓС‚Р° (РєРј): ");
         scanf("%lf", &routes[i].length);
 
-        printf("Введите количество остановок: ");
+        printf("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕСЃС‚Р°РЅРѕРІРѕРє: ");
         scanf("%d", &routes[i].stopcount);
         printf("\n");
     }
 
-    printf("Введите значение среднего расстояния в км: ");
+    printf("Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ СЃСЂРµРґРЅРµРіРѕ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ РІ РєРј: ");
     scanf("%lf", &treshholdvalue);
     printf("\n");
 
@@ -61,12 +61,12 @@ double calculate_distance(double length, int stopcount) {
 }
 
 void print_route(struct Busroute r, double distance) {
-    printf("  Номер маршрута: %d\n", r.number);
-    printf("  Начальная остановка: %s\n", r.startroad);
-    printf("  Конечная остановка: %s\n", r.stoproad);
-    printf("  Длина маршрута: %.2lf км\n", r.length);
-    printf("  Количество остановок: %d\n", r.stopcount);
-    printf("  Среднее расстояние между остановками: %.2lf км\n", distance);
+    printf("  РќРѕРјРµСЂ РјР°СЂС€СЂСѓС‚Р°: %d\n", r.number);
+    printf("  РќР°С‡Р°Р»СЊРЅР°СЏ РѕСЃС‚Р°РЅРѕРІРєР°: %s\n", r.startroad);
+    printf("  РљРѕРЅРµС‡РЅР°СЏ РѕСЃС‚Р°РЅРѕРІРєР°: %s\n", r.stoproad);
+    printf("  Р”Р»РёРЅР° РјР°СЂС€СЂСѓС‚Р°: %.2lf РєРј\n", r.length);
+    printf("  РљРѕР»РёС‡РµСЃС‚РІРѕ РѕСЃС‚Р°РЅРѕРІРѕРє: %d\n", r.stopcount);
+    printf("  РЎСЂРµРґРЅРµРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ РѕСЃС‚Р°РЅРѕРІРєР°РјРё: %.2lf РєРј\n", distance);
 }
 
 void process_routes(struct Busroute routes[], int count, double threshold) {
@@ -74,26 +74,26 @@ void process_routes(struct Busroute routes[], int count, double threshold) {
     int found = 0;
     double dist;
 
-    printf("--- Все записи маршрутов ---\n");
+    printf("--- Р’СЃРµ Р·Р°РїРёСЃРё РјР°СЂС€СЂСѓС‚РѕРІ ---\n");
     for (i = 0; i < count; i++) {
         dist = calculate_distance(routes[i].length, routes[i].stopcount);
-        printf("\nМаршрут %d:\n", i + 1);
+        printf("\nРњР°СЂС€СЂСѓС‚ %d:\n", i + 1);
         print_route(routes[i], dist);
     }
 
-    printf("\n--- Маршруты, где среднее расстояние меньше %.2lf км ---\n", threshold);
+    printf("\n--- РњР°СЂС€СЂСѓС‚С‹, РіРґРµ СЃСЂРµРґРЅРµРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµРЅСЊС€Рµ %.2lf РєРј ---\n", threshold);
     for (i = 0; i < count; i++) {
         
         dist = calculate_distance(routes[i].length, routes[i].stopcount);
 
         if (dist < threshold && routes[i].stopcount > 1) {
-            printf("\nМаршрут %d:\n", i + 1);
+            printf("\nРњР°СЂС€СЂСѓС‚ %d:\n", i + 1);
             print_route(routes[i], dist);
             found++;
         }
     }
 
     if (found == 0) {
-        printf("Маршрутов, удовлетворяющих заданному условию, не найдено.\n");
+        printf("РњР°СЂС€СЂСѓС‚РѕРІ, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… Р·Р°РґР°РЅРЅРѕРјСѓ СѓСЃР»РѕРІРёСЋ, РЅРµ РЅР°Р№РґРµРЅРѕ.\n");
     }
 }
